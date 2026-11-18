@@ -198,7 +198,9 @@ export function tvlMultiple(tvlUsd: number, model: ModelConstants): number {
   return Math.min(model.multiple_cap, Math.max(model.multiple_floor, raw));
 }
 
-/** The five multipliers and the implied value one protocol gets under `model`. */
+/** What one protocol would be worth if it launched a token tomorrow, guessed from its own numbers alone.
+ * Size counts for less per dollar as a protocol grows, recent growth and a long un-tokenised history
+ * lift it, and reaching more chains adds a little; the product of the five is the launch value. */
 export function impliedValue(
   protocol: SnapshotProtocol,
   asOf: string,
